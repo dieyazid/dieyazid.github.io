@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Coming Soon</title>
+  
+  <style>
+  /* CSS styles */
+  </style>
+</head>
+
+<body>
+
+  <h1>We're Launching Soon</h1>
+
+  <p id="countdown"></p>
+
+  <p>Hello! We are currently working hard on this website. Subscribe below to get notified when we launch!</p>
+
+  <a id="subscribe" href="#">Subscribe</a>
+
+  <script>
+  // JavaScript countdown code 
+  
+  // Set launch date
+  const launchDate = new Date("April 1, 2023 00:00:00").getTime();
+
+  // Update countdown every 1 second
+  setInterval(() => {
+
+    // Get current date and time  
+    const now = new Date().getTime();
+    
+    // Find the distance between now and launch date
+    const distance = launchDate - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Display countdown in DOM
+    document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    
+    // If launch date passed
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("countdown").innerHTML = "Launched!"; 
+    }
+  }, 1000);
+  
+  </script>
+
+</body>
+</html>
